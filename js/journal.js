@@ -11,6 +11,11 @@ Entry.prototype.countVowels = function(body) {
   //should we use gi regex?
 };
 
+Entry.prototype.countConsonants = function(body) {
+  return body.match(/[bcdfghjklmnpqrstvwxyz]/gi).length;
+  //should we use gi regex?
+};
+
 
 
 exports.entryModule = Entry;

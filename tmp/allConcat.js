@@ -12,9 +12,10 @@ $(document).ready(function() {
     var body = $('#body').val();
     var entry = new Entry(title, body);
 
-    $("#newtitle").text(entry.title);
-    $("#newbody").text(entry.body);
-    $("#newword").text(entry.wordCount(body));
+    $("#newtitle").text("Title: " + title + " .");
+    $("#newbody").text("Body: " + body + " .");
+    $("#newword").text("Word Count: " + entry.wordCount(body) + " .");
     $("#newVowel").text(entry.countVowels(body));
+    $("#newConsonant").text(entry.countConsonants(body));
     });
   });
