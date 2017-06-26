@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  $('#time').text(moment());
+});
+
 var Entry = require('./../js/journal.js').entryModule;
 
 
@@ -11,6 +15,6 @@ $(document).ready(function() {
     $("#newtitle").text(entry.title);
     $("#newbody").text(entry.body);
     $("#newword").text(entry.wordCount(body));
-
+    $("#newVowel").text(entry.countVowels(body));
     });
   });

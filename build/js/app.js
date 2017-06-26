@@ -7,9 +7,20 @@ Entry.prototype.wordCount = function(body) {
   return body.split(" ").length;
 };
 
+Entry.prototype.countVowels = function(body) {
+  return body.match(/[aeiou]/gi).length;
+  //should we use gi regex?
+};
+
+
+
 exports.entryModule = Entry;
 
 },{}],2:[function(require,module,exports){
+$(document).ready(function(){
+  $('#time').text(moment());
+});
+
 var Entry = require('./../js/journal.js').entryModule;
 
 
@@ -23,8 +34,7 @@ $(document).ready(function() {
     $("#newtitle").text(entry.title);
     $("#newbody").text(entry.body);
     $("#newword").text(entry.wordCount(body));
-
-      // $('#wordcount').append("<li>This contains " + wordCount + " words.</li>");
+    $("#newVowel").text(entry.countVowels(body));
     });
   });
 

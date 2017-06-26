@@ -11,5 +11,6 @@ $(document).ready(function() {
     $("#newtitle").text(entry.title);
     $("#newbody").text(entry.body);
     $("#newword").text(entry.wordCount(body));
+    $("#newVowel").text(entry.countVowels(body));
     });
   });
