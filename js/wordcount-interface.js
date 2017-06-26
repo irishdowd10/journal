@@ -8,8 +8,8 @@ $(document).ready(function() {
     var body = $('#body').val();
     var entry = new Entry(title, body);
 
-    $("#newtitle").text("Title: " + title + " .");
-    $("#newbody").text("Body: " + body + " .");
+    $("#newtitle").text("Title: " + title + ".");
+    $("#newbody").text("Body: " + body + ".");
     $("#newword").text("Word Count: " + entry.wordCount(body));
     $("#newVowel").text("Vowel Count: " + entry.countVowels(body));
     $("#newConsonant").text("Consonant Count: " + entry.countConsonants(body));

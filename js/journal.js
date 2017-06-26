@@ -16,6 +16,4 @@ Entry.prototype.countConsonants = function(body) {
   //should we use gi regex?
 };
 
-
-
 exports.entryModule = Entry;

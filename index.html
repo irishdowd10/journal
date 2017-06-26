@@ -9,20 +9,30 @@
   <body>
     <div class="container">
       <h2>Write an entry:</h2>
-      <form id="posting" action="index.html" method="post">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title">
-        <label for="body">Entry</label>
-        <input type="text" name="body" id="body">
+      <form class="form-horizontal" id="posting" action="index.html" method="post">
+        <div class="form-group">
+        <label class="col-md-2" for="title">Title:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" name="title" id="title">
+          </div>
+        </div>
+        <div class="form-group">
+        <label class="col-md-2" for="body">Body:</label>
+        <div class="col-md-10">
+          <input class="form-control" type="text" name="body" id="body">
+          </div>
+        </div>
+
         <button type="submit" name="button">submit</button>
       </form>
       <h4 id="time"></h4>
-      <p id="newtitle"> </p>
-      <p id="newbody"> </p>
-      <p id="newword"> </p>
-      <p id="newVowel"> </p>
-      <p id="newConsonant"> </p>
-
+      <div class="result">
+      <p id="newtitle"></p>
+      <p id="newbody"></p>
+      <p id="newword"></p>
+      <p id="newVowel"></p>
+      <p id="newConsonant"></p>
+    </div>
     </div>
   </body>
 </html>
