@@ -19,8 +19,17 @@ var buildProduction = utilities.env.production;
 var jshint = require('gulp-jshint');
 
 //add bower files of jquery and bootstrap
-var lib = require('bower-files')();
-
+var lib = require('bower-files')({
+  "overrides":{
+    "bootstrap" : {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+});
 
 gulp.task('jsBrowserify', ['concatInterface'], function() {
   return browserify({ entries: ['./tmp/allConcat.js'] })
@@ -59,9 +68,8 @@ gulp.task('jshint', function(){
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('bowerJS', function () {
-  return gulp.src(lib.ext('js').files)
-    .pipe(concat('vendor.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('./build/js'));
+gulp.task('bowerCSS', function () {
+  return gulp.src(lib.ext('css').files)
+    .pipe(concat('vendor.css'))
+    .pipe(gulp.dest('./build/css'));
 });
