@@ -1,1 +1,31 @@
-!function r(n,o,e){function t(i,f){if(!o[i]){if(!n[i]){var a="function"==typeof require&&require;if(!f&&a)return a(i,!0);if(u)return u(i,!0);var c=new Error("Cannot find module '"+i+"'");throw c.code="MODULE_NOT_FOUND",c}var s=o[i]={exports:{}};n[i][0].call(s.exports,function(r){var o=n[i][1][r];return t(o||r)},s,s.exports,r,n,o,e)}return o[i].exports}for(var u="function"==typeof require&&require,i=0;i<e.length;i++)t(e[i]);return t}({1:[function(r,n,o){o.wordCountModule=function(r,n){for(var o=0,n=n.ToLower(),r=r.ToLower(),e=n.Split(" "),t=0;t<e.Length;t++)e[t]===r&&o++;return o}},{}],2:[function(r,n,o){r("./../js/journal.js").wordCountModule;$(document).ready(function(){$("#posting").submit(function(r){r.preventDefault();$("#entry").val();var n=simpleWordCount.numberWords();$("#wordcount").append("<li>This contains "+n+" words.</li>")})})},{"./../js/journal.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+function wordCount(word, sentence) {
+  var count = 0;
+  var sentence = sentence.ToLower();
+  var word = word.ToLower();
+  var wordArray = sentence.Split(' ');
+
+    for (var i = 0; i < wordArray.Length; i++)
+    {
+      if(wordArray[i] === word)
+      count++;
+    }
+
+  return count;
+};
+exports.wordCountModule = wordCount;
+
+},{}],2:[function(require,module,exports){
+var wordCount = require('./../js/journal.js').wordCountModule;
+
+
+$(document).ready(function() {
+  $('#posting').submit(function(event) {
+    event.preventDefault();
+    var wordArray = $('#entry').val();
+    var count = simpleWordCount.numberWords();
+      $('#wordcount').append("<li>This contains " + count + " words.</li>");
+    });
+  });
+
+},{"./../js/journal.js":1}]},{},[2]);

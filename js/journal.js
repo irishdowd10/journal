@@ -1,15 +1,9 @@
-function wordCount(word, sentence) {
-  var count = 0;
-  var sentence = sentence.ToLower();
-  var word = word.ToLower();
-  var wordArray = sentence.Split(' ');
+function Entry(title, body) {
+  this.title = title;
+  this.body = body;
 
-    for (var i = 0; i < wordArray.Length; i++)
-    {
-      if(wordArray[i] === word)
-      count++;
-    }
-
-  return count;
+Entry.prototype.wordCount = function(body) {
+  return body.split(" ").length;
 };
-exports.wordCountModule = wordCount;
+
+exports.entryModule = Entry;
