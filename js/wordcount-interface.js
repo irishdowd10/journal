@@ -11,7 +11,5 @@ $(document).ready(function() {
     $("#newtitle").text(entry.title);
     $("#newbody").text(entry.body);
     $("#newword").text(entry.wordCount(body));
-
-      // $('#wordcount').append("<li>This contains " + wordCount + " words.</li>");
     });
   });

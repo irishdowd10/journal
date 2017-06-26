@@ -6,4 +6,11 @@ Entry.prototype.wordCount = function(body) {
   return body.split(" ").length;
 };
 
+Entry.prototype.countVowels = function(body) {
+  return body.match(/[aeiou]/gi).length;
+  //should we use gi regex?
+};
+
+
+
 exports.entryModule = Entry;

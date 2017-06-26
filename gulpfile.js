@@ -1,20 +1,26 @@
+var del = require('del');
 var gulp = require('gulp');
+
 //browserify and vinyl go together
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
+
 //concat
 var concat = require('gulp-concat');
+
 //minify
 var uglify = require('gulp-uglify');
 
 //build and clean go together
 var utilities = require('gulp-util');
 var buildProduction = utilities.env.production;
-// var del = require('del');
 
-gulp.task('myTask', function(){
-  console.log('hello gulp');
-});
+//writes a gulp task to automatically check our code using the linter
+var jshint = require('gulp-jshint');
+
+//add bower files of jquery and bootstrap
+var lib = require('bower-files')();
+
 
 gulp.task('jsBrowserify', ['concatInterface'], function() {
   return browserify({ entries: ['./tmp/allConcat.js'] })
@@ -35,14 +41,27 @@ gulp.task("minifyScripts", ["jsBrowserify"], function(){
     .pipe(gulp.dest("./build/js"));
 });
 
-gulp.task("build", function() {
+gulp.task("clean", function(){
+  return del(['build', 'tmp']);
+});
+
+gulp.task("build", ['clean'], function(){
   if (buildProduction) {
     gulp.start('minifyScripts');
   } else {
     gulp.start('jsBrowserify');
-  };
+  }
 });
 
-// gulp.task("clean", function() {
-//   return del(['build', 'tmp']);
-// });
+gulp.task('jshint', function(){
+  return gulp.src(['js/*.js'])
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
+
+gulp.task('bowerJS', function () {
+  return gulp.src(lib.ext('js').files)
+    .pipe(concat('vendor.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./build/js'));
+});
